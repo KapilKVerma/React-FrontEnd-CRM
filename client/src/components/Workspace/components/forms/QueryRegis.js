@@ -41,7 +41,7 @@ const QueryRegis = () => {
     <div>
       <Card>
         <Card.Body>
-          Register User Query
+          <h6> Register User Query</h6>
           <hr></hr>
           <form className={classes.root} noValidate autoComplete="off">
             <TextField

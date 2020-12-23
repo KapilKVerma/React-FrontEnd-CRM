@@ -84,7 +84,7 @@ export default function Admin() {
           <Tab label="Home" {...a11yProps(0)} />
           <Tab label="Employees" {...a11yProps(1)} />
           <Tab label="Register Employees" {...a11yProps(2)} />
-          <Tab label="Integrate Services" {...a11yProps(3)} />{" "}
+          <Tab label="Integrations" {...a11yProps(3)} />{" "}
           <Tab label="Add Query Type" {...a11yProps(4)} />
           <Tab label="Add Department" {...a11yProps(5)} />
         </Tabs>

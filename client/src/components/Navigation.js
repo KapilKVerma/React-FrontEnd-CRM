@@ -22,7 +22,7 @@ const Navigation = () => {
       <Navbar
         style={{
           background: "white",
-          borderBottom: "2px solid",
+          borderBottom: "1px solid",
           borderColor: "#6a74fc",
         }}
         className="p-2 shadow"
@@ -32,9 +32,29 @@ const Navigation = () => {
           <Navbar.Toggle />
           <Navbar.Collapse
             className="justify-content-end"
-            style={{ fontSize: "14px" }}
+            style={{ fontWeight: "500" }}
           >
-            {/* {userData.user ? ( */}
+            <Nav className="mr-3">About </Nav>
+            <Nav className="mr-3">Contact </Nav>
+            <Button
+              variant="contained"
+              color="secondary"
+              className="mr-2"
+              style={{ fontSize: "12px", padding: "0.3rem 0.5rem" }}
+              href="/signin"
+            >
+              Signin
+            </Button>{" "}
+            |{" "}
+            <Button
+              variant="contained"
+              color="primary"
+              className="ml-2"
+              style={{ fontSize: "12px", padding: "0.3rem 0.5rem" }}
+              href="/signup"
+            >
+              Signup
+            </Button>
             <div>
               <Nav
                 className="mr-auto "

@@ -16,9 +16,8 @@ const UserRegis = () => {
   return (
     <div>
       <Card>
-        <Card.Body>
-          User Registration
-          <hr></hr>{" "}
+        <Card.Body className="p-4 ">
+          <h5 className="mb-3 ml-2"> User Registration</h5>
           <form className={classes.root} noValidate autoComplete="off">
             <TextField
               required

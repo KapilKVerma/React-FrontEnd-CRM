@@ -4,6 +4,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
+const user = "";
+//  {
+//   name: "Tom Derick",
+//   contact: "0412345662",
+//   email: " firstname.last@company.com",
+//   address: "345 #address, City, State - 5678",
+//   registration_no: "#8345#45bHJ4Erc&77",
+//   service_type: "monthly",
+// };
+
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -19,7 +29,8 @@ const SearchUser = () => {
       <Row>
         <Card>
           <Card.Body>
-            Search User
+            <h6>Search User</h6>
+
             <hr></hr>
             <form className={classes.root} noValidate autoComplete="off">
               {" "}
@@ -51,41 +62,46 @@ const SearchUser = () => {
         {" "}
         <Card
           style={{
-            minHeight: "20vh",
+            minHeight: "42vh",
             maxHeight: "80vh",
             width: "100%",
           }}
           className=" mt-4"
         >
           <Card.Body>
-            User Details
-            <Table bordered hover className="mt-3">
-              <tbody>
-                <tr>
-                  <td>Name</td>
-                  <td>Mark</td>
-                </tr>
-                <tr>
-                  <td>Contact</td>
-                  <td>Jacob</td>
-                </tr>
-                <tr>
-                  <td>Email</td>
-                  <td>Jacob</td>
-                </tr>
-                <tr>
-                  <td>Address</td>
-                  <td>Jacob</td>
-                </tr>
-                <tr>
-                  <td>Registration No.</td>
-                  <td>Jacob</td>
-                </tr>
-                <tr>
-                  <td>Service Type</td>
-                  <td>Jacob</td>
-                </tr>
-              </tbody>
+            <h6> User Details</h6>
+            <Table bordered hover size="sm" className="mt-3">
+              {user ? (
+                <tbody>
+                  <tr>
+                    <td>Name</td>
+                    <td>{user.name}</td>
+                  </tr>
+                  <tr>
+                    <td>Contact</td>
+                    <td>{user.contact}</td>
+                  </tr>
+                  <tr>
+                    <td>Registration No.</td>
+                    <td>{user.registration_no}</td>
+                  </tr>
+                </tbody>
+              ) : (
+                <Card
+                  style={{
+                    height: "30vh",
+                    backgroundColor: "#f5f5f5",
+                    borderColor: "#ededed",
+                    borderWidth: "0px",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "2rem",
+                    color: "#c4c4c4",
+                  }}
+                >
+                  User Details
+                </Card>
+              )}
             </Table>
           </Card.Body>
         </Card>

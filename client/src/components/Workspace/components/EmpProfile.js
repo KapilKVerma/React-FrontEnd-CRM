@@ -7,7 +7,7 @@ const EmpProfile = () => {
     <div>
       <Card>
         <Card.Body>
-          Kapil Profile<hr></hr>
+          <h5 className="pl-3"> Profile Details</h5>
           <Row>
             <Col lg={4}>
               <div className="p-3">
@@ -63,9 +63,6 @@ const EmpProfile = () => {
               </Table>
             </Col>
           </Row>
-          <Button variant="contained" color="primary">
-            Edit
-          </Button>
         </Card.Body>
       </Card>
     </div>
