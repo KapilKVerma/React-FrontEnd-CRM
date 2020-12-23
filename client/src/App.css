@@ -1,0 +1,48 @@
+.App {
+  margin: 50px;
+}
+
+.body-content {
+  margin: 50px;
+}
+
+.card {
+  border-radius: 2px;
+  /* box-shadow: 0px 0px 19px 1px rgb(216, 214, 214); */
+  border-width: 1.25px;
+}
+
+.display-jirareg {
+  display: none;
+}
+.tab {
+  border-right-width: 1px;
+}
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 91%;
+
+  background-image: linear-gradient(to right, violet, indigo);
+  border-radius: 6px;
+  font-size: 15px;
+  padding: 3%;
+  color: white;
+  position: absolute;
+  top: -20px;
+}
+
+.button {
+  padding: 1% 1.5%;
+  border-radius: 50px;
+  font-size: small;
+  font-size: 8px;
+  color: black;
+  background-color: white;
+  border-color: white;
+}
+
+.intergration-body {
+  display: inline;
+}
