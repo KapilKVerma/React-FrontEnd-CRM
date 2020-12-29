@@ -1,18 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Row, Col, Table } from "react-bootstrap";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-
-const user = "";
-//  {
-//   name: "Tom Derick",
-//   contact: "0412345662",
-//   email: " firstname.last@company.com",
-//   address: "345 #address, City, State - 5678",
-//   registration_no: "#8345#45bHJ4Erc&77",
-//   service_type: "monthly",
-// };
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +15,45 @@ const useStyles = makeStyles((theme) => ({
 }));
 const SearchUser = () => {
   const classes = useStyles();
+  const [users, setUsers] = useState();
+  const [user, setUser] = useState();
+
+  const searchUser = () => {
+    fetch(`http://127.0.0.1:5000/users/search`, {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: new Headers({
+        "content-type": "application/json",
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log("Fetch error: " + error.message);
+      });
+  };
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/users/")
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        setUsers(data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, []);
+
   return (
     <div>
       <Row>
@@ -39,18 +69,25 @@ const SearchUser = () => {
                 id="outlined-required"
                 label="Name"
                 variant="outlined"
+                onChange={(e) => {
+                  setUser({ ...user, name: e.target.value });
+                }}
               />
               <TextField
                 required
                 id="outlined-required"
                 label="Phone No."
                 variant="outlined"
+                onChange={(e) => {
+                  setUser({ ...user, contact: e.target.value });
+                }}
               />{" "}
               <Button
                 variant="contained"
                 color="primary"
                 className="mt-3"
                 style={{ width: "30%", padding: "0.75rem" }}
+                onClick={searchUser}
               >
                 Search
               </Button>
@@ -71,21 +108,31 @@ const SearchUser = () => {
           <Card.Body>
             <h6> User Details</h6>
             <Table bordered hover size="sm" className="mt-3">
-              {user ? (
-                <tbody>
-                  <tr>
-                    <td>Name</td>
-                    <td>{user.name}</td>
-                  </tr>
-                  <tr>
-                    <td>Contact</td>
-                    <td>{user.contact}</td>
-                  </tr>
-                  <tr>
-                    <td>Registration No.</td>
-                    <td>{user.registration_no}</td>
-                  </tr>
-                </tbody>
+              {users ? (
+                <div>
+                  {users.map((user) => {
+                    return (
+                      <tbody key={user.id}>
+                        <tr>
+                          <td>Name</td>
+                          <td>{user.name}</td>
+                        </tr>
+                        <tr>
+                          <td>Contact</td>
+                          <td>{user.contact}</td>
+                        </tr>
+                        <tr>
+                          <td>Email</td>
+                          <td>{user.email}</td>
+                        </tr>
+                        <tr>
+                          <td>Registration No.</td>
+                          <td>{user.registration_no}</td>
+                        </tr>
+                      </tbody>
+                    );
+                  })}
+                </div>
               ) : (
                 <Card
                   style={{

@@ -25,17 +25,23 @@ const Navigation = () => {
           borderBottom: "1px solid",
           borderColor: "#6a74fc",
         }}
-        className="p-2 shadow"
+        className="p-2 "
       >
         <Container>
-          <Navbar.Brand href="/">CFirst</Navbar.Brand>
+          <Navbar.Brand
+            href="/"
+            style={{ fontWeight: "500", fontSize: "1.5rem" }}
+          >
+            CFirst
+          </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse
             className="justify-content-end"
-            style={{ fontWeight: "500" }}
+            style={{ fontWeight: "500", fontSize: ".75rem" }}
           >
-            <Nav className="mr-3">About </Nav>
-            <Nav className="mr-3">Contact </Nav>
+            <Nav className="mr-2">PRICING </Nav> |
+            <Nav className="ml-2 mr-2">ABOUT </Nav> |
+            <Nav className="ml-2 mr-4">CONTACT </Nav>
             <Button
               variant="contained"
               color="secondary"
@@ -45,7 +51,6 @@ const Navigation = () => {
             >
               Signin
             </Button>{" "}
-            |{" "}
             <Button
               variant="contained"
               color="primary"
