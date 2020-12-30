@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Table, Card } from "react-bootstrap";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import axios from "axios";
 
 const Employees = () => {
+  const [employees, setEmployees] = useState();
+
+  useEffect(() => {
+    axios
+      .get("http://127.0.0.1:5000/emp")
+      .then((res) => {
+        console.log(res.data);
+        setEmployees(res.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
   return (
     <div>
       <Row>
@@ -22,46 +37,59 @@ const Employees = () => {
           </div>{" "}
           <Card>
             <Card.Body className="p-0">
-              <Table striped hover>
+              <Table striped hover style={{ fontSize: "12px" }}>
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Branch</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td className="p-2" style={{ width: "16%" }}>
-                      {" "}
-                      <Button
-                        variant="contained"
-                        style={{
-                          backgroundColor: "#00c45f",
-                          color: "white",
-                          padding: "0.25rem",
-                        }}
-                      >
-                        {" "}
-                        Edit{" "}
-                      </Button>{" "}
-                      |{" "}
-                      <Button
-                        variant="contained"
-                        color="secondary"
-                        style={{ padding: "0.25rem 1rem" }}
-                      >
-                        {" "}
-                        Delete{" "}
-                      </Button>
-                    </td>
-                  </tr>
+                  {employees &&
+                    employees.map((employee) => {
+                      return (
+                        <tr>
+                          <td>{employee.emp_id}</td>
+                          <td>{employee.emp_name}</td>
+                          <td>{employee.emp_position}</td>
+                          <td>{employee.emp_email}</td>
+                          <td>{employee.emp_contact}</td>
+                          <td>{employee.emp_officebranch}</td>
+                          <td className="p-2" style={{ width: "16%" }}>
+                            {" "}
+                            <Button
+                              variant="contained"
+                              style={{
+                                backgroundColor: "#00c45f",
+                                color: "white",
+                                padding: "0.25rem",
+                                fontSize: "12px",
+                              }}
+                            >
+                              {" "}
+                              Edit{" "}
+                            </Button>{" "}
+                            |{" "}
+                            <Button
+                              variant="contained"
+                              color="secondary"
+                              style={{
+                                padding: "0.25rem 1rem",
+                                fontSize: "12px",
+                              }}
+                            >
+                              {" "}
+                              Delete{" "}
+                            </Button>
+                          </td>
+                        </tr>
+                      );
+                    })}
                 </tbody>
               </Table>
             </Card.Body>

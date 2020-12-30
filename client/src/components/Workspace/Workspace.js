@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Tabs, Tab, Typography, Box } from "@material-ui/core";
-import QueryRegisForm from "./components/forms/QueryRegis";
+import QueryRegisForm from "./components/forms/QueryReg";
 import SearchUserForm from "./components/forms/SearchUser";
-import UserRegisForm from "./components/forms/UserRegis";
+import CustRegForm from "./components/forms/CustomerReg";
 import EmpProfile from "./components/EmpProfile";
 import { Container, Row, Col, Card } from "react-bootstrap";
 
@@ -78,7 +78,7 @@ export default function Workspace() {
           centered
         >
           <Tab label="Queries" {...a11yProps(0)} />
-          <Tab label="Users" {...a11yProps(1)} />
+          <Tab label="Customer Registration" {...a11yProps(1)} />
           <Tab label="Profile" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
@@ -95,8 +95,8 @@ export default function Workspace() {
         </Container>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Container>
-          <UserRegisForm />
+        <Container style={{ width: "42%" }}>
+          <CustRegForm />
         </Container>
       </TabPanel>
       <TabPanel value={value} index={2}>

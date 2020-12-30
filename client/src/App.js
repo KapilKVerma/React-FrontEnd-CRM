@@ -58,7 +58,7 @@ function App() {
     //   console.log("Error:", error.message);
     // }
     axios
-      .get("http://127.0.0.1:5000/")
+      .get("http://127.0.0.1:5000")
       .then((res) => {
         console.log(res.data);
       })
