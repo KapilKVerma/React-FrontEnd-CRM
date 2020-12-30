@@ -7,7 +7,6 @@ import { Container, Row, Col, Jumbotron } from "react-bootstrap";
 import Issues from "./components/Issues";
 import Jira from "./components/Jira";
 
-import Users from "./components/Users";
 import Employees from "./components/Employees";
 import EmpRegisForm from "./components/forms/EmpRegis";
 import axios from "axios";

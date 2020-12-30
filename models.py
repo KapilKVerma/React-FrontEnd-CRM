@@ -31,3 +31,21 @@ class Employee(db.Model):
     emp_address = db.Column(db.String(250), nullable=False)
     emergency_contactname = db.Column(db.String(100), nullable=False)
     emergency_contactno = db.Column(db.BigInteger, unique=True, nullable=False)
+
+
+class Query(db.Model):
+    """ Query MODEL """
+
+    __tablename__ = 'queries'
+    id = db.Column(db.Integer, primary_key=True)
+    query_id = db.Column(db.BigInteger, unique=True, nullable=False)
+    query_description = db.Column(db.String(250), nullable=False)
+    query_type = db.Column(db.String(100), nullable=False)
+    query_notes = db.Column(db.String(250), nullable=True)
+    cust_regno = db.Column(db.BigInteger, unique=False, nullable=False)
+    cust_name = db.Column(db.String(100), nullable=False)
+    department = db.Column(db.String(100), nullable=False)
+    query_handler = db.Column(db.String(100), nullable=True)
+    query_status = db.Column(db.String(100), nullable=False, default='active')
+    query_created = db.Column(db.String(100), nullable=False)
+    query_createdby = db.Column(db.String(100), nullable=False)

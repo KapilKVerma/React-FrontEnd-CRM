@@ -32,7 +32,8 @@ def user():
 # Query routes =====
 
 
-@ app.route('/query/new', methods=['POST'])
+@ app.route('/query', methods=['POST'])
+@cross_origin()
 def register_query():
     query_data = request.json
     print(query_data)

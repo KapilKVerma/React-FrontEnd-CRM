@@ -24,7 +24,7 @@ const QueryReg = () => {
   const submitQuery = (e) => {
     e.preventDefault();
     console.log(queryData);
-    fetch(`http://127.0.0.1:5000/query/new`, {
+    fetch(`http://127.0.0.1:5000/query`, {
       method: "POST",
       body: JSON.stringify(queryData),
       headers: new Headers({
